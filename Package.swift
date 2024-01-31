@@ -84,8 +84,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/objecthub/swift-numberkit.git", from: "2.4.1"),
         .package(url: "https://github.com/thebarndog/swift-dotenv.git", from: "1.0.0"),
-        .package(url: "https://github.com/grpc/grpc-swift.git", from: "1.16.0"),
-        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.6.0"),
+        .package(url: "https://github.com/tangem/grpc-swift.git", branch: "feature/IOS-5792-SPM-dependencies-support"),
+        .package(url: "https://github.com/tangem/swift-protobuf.git", branch: "feature/IOS-5792-SPM-dependencies-support"),
         .package(url: "https://github.com/vsanthanam/AnyAsyncSequence.git", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-atomics.git", from: "1.1.0"),
         // swift-asn1 wants swift 5.7+ past 0.4
