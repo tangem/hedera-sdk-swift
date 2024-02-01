@@ -24,7 +24,7 @@
       "location" : "https://github.com/tangem/grpc-swift.git",
       "state" : {
         "branch" : "feature/IOS-5792-SPM-dependencies-support",
-        "revision" : "bb8ee86a149e244ce63b71ac34dc5a2f7bd7f12a"
+        "revision" : "5318235c1bb4cb8943f6206e3ad65162551690d9"
       }
     },
     {
@@ -163,12 +163,12 @@
       }
     },
     {
-      "identity" : "swift-protobuf",
+      "identity" : "swift-protobuf-binaries",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/tangem/swift-protobuf.git",
+      "location" : "https://github.com/tangem/swift-protobuf-binaries.git",
       "state" : {
         "branch" : "feature/IOS-5792-SPM-dependencies-support",
-        "revision" : "9e56dadd3a3d865bd6ff44847cfc27305dc7b55e"
+        "revision" : "7f7a414b093735ab5431d6a45b73868bcd55d5ac"
       }
     },
     {
