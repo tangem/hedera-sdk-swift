@@ -450,3 +450,47 @@ extension SourceTransactionExecuteView: Execute {
         Tx.responsePrecheckStatus(response)
     }
 }
+
+// MARK: - Tangem additions
+
+extension TransactionSources {
+    /// Signs all of the transactions with the given signers.
+    /// - Note: Signs in a one-to-one fashion (one specific signer at a particular index is used to sign one specific transaction at the same index).
+    /// - Note: Tangem addition.
+    internal func signWithSignersOneToOne(_ signers: [Signer]) -> Self {
+        var signedTransactions = self.signedTransactions
+        // hack: arrays have no way of telling if they've been cowed ._.
+        var mutated: Bool = false
+
+        for (index, signer) in signers.enumerated() {
+            var transaction = signedTransactions[index]
+
+            if transaction.isAlreadySignedWithPublicKey(signer.publicKey) {
+                continue
+            }
+
+            mutated = true
+
+            let signaturePair = Transaction.SignaturePair(signer(transaction.bodyBytes))
+            transaction.sigMap.sigPair.append(signaturePair.toProtobuf())
+
+            signedTransactions[index] = transaction
+        }
+
+        // Don't COW if all signers were duplicates.
+        guard mutated else {
+            return self
+        }
+
+        return Self(
+            guts: Ref(
+                signedTransactions: signedTransactions,
+                transactions: OnceRace(),
+                chunks: guts.chunks,
+                transactionIds: guts.transactionIds,
+                nodeIds: guts.nodeIds,
+                hashes: guts.lazyHashes
+            )
+        )
+    }
+}
