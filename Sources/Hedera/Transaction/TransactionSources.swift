@@ -279,12 +279,7 @@ extension TransactionSources {
         var mutated: Bool = false
 
         for signer in signers {
-            let key = signer.publicKey.toBytesRaw()
-
-            let sigPairs = signedTransactions.first?.sigMap.sigPair
-
-            if sigPairs?.contains(where: { key.starts(with: $0.pubKeyPrefix) }) ?? false {
-                // this signer already signed these transactions.
+            if signedTransactions.first?.isAlreadySignedWithPublicKey(signer.publicKey) ?? false {
                 continue
             }
 
