@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tangem/grpc-swift.git",
       "state" : {
-        "branch" : "feature/IOS-5792-SPM-dependencies-support",
-        "revision" : "04dbe855fff68a4062252a8cbc805de20a35c129"
+        "revision" : "d1d312e2547f0091341efb9f465791dd8380a24c",
+        "version" : "1.21.0-tangem1"
       }
     },
     {
