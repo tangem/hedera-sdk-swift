@@ -43,9 +43,11 @@ public struct Timestamp: Sendable, Equatable, Hashable, CustomStringConvertible,
     /// `Date` is stored as `Double` seconds, so, it may not have full precision.
     public init(from date: Date) {
         let components = Calendar.current.dateComponents([.second, .nanosecond], from: unixEpoch, to: date)
+        let seconds = components.second ?? .zero
+        let nanoseconds = components.nanosecond ?? .zero
 
-        seconds = UInt64(components.second!)
-        subSecondNanos = UInt32(components.nanosecond!)
+        self.seconds = UInt64(clamping: seconds)
+        self.subSecondNanos = UInt32(clamping: nanoseconds)
     }
 
     // todo: what do on overflow?
