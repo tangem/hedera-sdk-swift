@@ -6,6 +6,6 @@ extension Proto_SignedTransaction {
     internal func isAlreadySignedWithPublicKey(_ publicKey: PublicKey) -> Bool {
         let key = publicKey.toBytesRaw()
 
-        return sigMap.sigPair.contains { key.starts(with: $0.pubKeyPrefix) } ?? false
+        return sigMap.sigPair.contains { key.starts(with: $0.pubKeyPrefix) }
     }
 }
